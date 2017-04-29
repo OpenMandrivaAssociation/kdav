@@ -25,10 +25,11 @@ BuildRequires: cmake(Qt5Core)
 BuildRequires: cmake(Qt5Gui)
 BuildRequires: cmake(Qt5Xml)
 BuildRequires: cmake(Qt5XmlPatterns)
+BuildRequires: cmake(Qt5Test)
 Requires: %{libname} = %{EVRD}
 
 %description
-DAV implementation for KDE
+DAV implementation for KDE.
 
 %package -n %{libname}
 Summary: DAV implementation for KDE
@@ -36,7 +37,7 @@ Group: System/Libraries
 Requires: %{name} = %{EVRD}
 
 %description -n %{libname}
-Calendar support library for KAlarm
+DAV support library for KDE.
 
 %package -n %{devname}
 Summary: Development files for %{name}
