@@ -3,7 +3,10 @@
 %define devname %mklibname KPimKDAV -d
 
 Name: kdav
-Version:	20.04.2
+# Moved from release-service to frameworks -->
+# version went from 20.04.2 to 5.72.0
+Epoch:	1
+Version:	5.72.0
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
@@ -11,7 +14,7 @@ Version:	20.04.2
 %define ftpdir stable
 %endif
 Release:	1
-Source0: http://download.kde.org/%{ftpdir}/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0: http://download.kde.org/%{ftpdir}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Summary: DAV implementation for KDE
 URL: http://kde.org/
 License: GPL
@@ -27,6 +30,8 @@ BuildRequires: cmake(Qt5Xml)
 BuildRequires: cmake(Qt5XmlPatterns)
 BuildRequires: cmake(Qt5Test)
 Requires: %{libname} = %{EVRD}
+# For devel docs
+BuildRequires: doxygen qt5-assistant
 
 %description
 DAV implementation for KDE.
@@ -57,7 +62,7 @@ Development files (Headers etc.) for %{name}.
 %install
 %ninja_install -C build
 
-%find_lang libkdav
+%find_lang libkdav --all-name --with-man || echo '%optional /remove/this/workaround' >libkdav.lang
 
 %files -f libkdav.lang
 %{_datadir}/qlogging-categories5/kdav.categories
@@ -70,3 +75,4 @@ Development files (Headers etc.) for %{name}.
 %{_libdir}/*.so
 %{_libdir}/cmake/*
 %{_libdir}/qt5/mkspecs/modules/*.pri
+%optional %doc %{_docdir}/qt5/KF5DAV.*
