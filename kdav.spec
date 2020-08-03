@@ -6,7 +6,7 @@ Name: kdav
 # Moved from release-service to frameworks -->
 # version went from 20.04.2 to 5.72.0
 Epoch:	1
-Version:	5.72.0
+Version:	5.73.0
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
@@ -65,7 +65,7 @@ Development files (Headers etc.) for %{name}.
 %find_lang libkdav --all-name --with-man || echo '%optional /remove/this/workaround' >libkdav.lang
 
 %files -f libkdav.lang
-%{_datadir}/qlogging-categories5/kdav.categories
+%{_datadir}/qlogging-categories5/kdav.*categories
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}*
