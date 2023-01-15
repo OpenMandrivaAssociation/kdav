@@ -6,14 +6,14 @@ Name: kdav
 # Moved from release-service to frameworks -->
 # version went from 20.04.2 to 5.72.0
 Epoch:	1
-Version:	5.101.0
+Version:	5.102.0
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
 %else
 %define ftpdir stable
 %endif
-Release:	2
+Release:	1
 Source0: http://download.kde.org/%{ftpdir}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Summary: DAV implementation for KDE
 URL: http://kde.org/
