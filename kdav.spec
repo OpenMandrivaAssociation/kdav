@@ -16,7 +16,7 @@ Version:	5.116.0
 Release:	1
 Source0: http://download.kde.org/%{ftpdir}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Summary: DAV implementation for KDE
-URL: http://kde.org/
+URL: https://kde.org/
 License: GPL
 Group: Graphical desktop/KDE
 BuildRequires: cmake(ECM)
